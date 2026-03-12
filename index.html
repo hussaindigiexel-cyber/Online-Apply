@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillsFlux | Master the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], },
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#06B6D4',
+                        darkbg: '#0B0F19',
+                        success: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0B0F19; color: #ffffff; scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #4F46E5, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        #enrollModal {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #enrollModal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .form-input:focus {
+            border-color: #06B6D4;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .hidden-el { display: none; }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-success { animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-40 bg-darkbg/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-3xl text-secondary"></i>
+                <span class="font-bold text-2xl tracking-tighter">Skills<span class="gradient-text">Flux</span></span>
+            </div>
+            <button onclick="openModal('')" class="bg-gradient-to-r from-primary to-secondary px-6 py-2 rounded-full font-bold hover:shadow-lg hover:shadow-cyan-500/20 transition">Join Now</button>
+        </div>
+    </nav>
+
+    <section class="pt-48 pb-20 px-4 text-center">
+        <h1 class="text-6xl font-extrabold mb-6 tracking-tight">Level Up With <span class="gradient-text">SkillsFlux</span></h1>
+        <p class="text-gray-400 max-w-xl mx-auto text-lg font-light">Industry-standard validation for premium user experience.</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 pb-20">
+        <div class="glass-card p-8 rounded-3xl border-t-2 border-primary">
+            <h3 class="text-2xl font-bold mb-2">Digital Marketing</h3>
+            <button onclick="openModal('digital-marketing')" class="w-full py-3 mt-4 rounded-xl bg-primary/10 border border-primary text-primary font-bold hover:bg-primary hover:text-white transition">Enroll Now</button>
+        </div>
+        <div class="glass-card p-8 rounded-3xl border-t-2 border-secondary">
+            <h3 class="text-2xl font-bold mb-2">SEO Content Writing</h3>
+            <button onclick="openModal('seo-writing')" class="w-full py-3 mt-4 rounded-xl bg-secondary/10 border border-secondary text-secondary font-bold hover:bg-secondary hover:text-white transition">Enroll Now</button>
+        </div>
+        <div class="glass-card p-8 rounded-3xl border-t-2 border-green-500">
+            <h3 class="text-2xl font-bold mb-2">Freelancing Mastery</h3>
+            <button onclick="openModal('freelancing')" class="w-full py-3 mt-4 rounded-xl bg-green-500/10 border border-green-500 text-green-500 font-bold hover:bg-green-500 hover:text-white transition">Enroll Now</button>
+        </div>
+        <div class="glass-card p-8 rounded-3xl border-t-2 border-purple-500">
+            <h3 class="text-2xl font-bold mb-2">Web Development</h3>
+            <button onclick="openModal('web-dev')" class="w-full py-3 mt-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold transition">Enroll Now</button>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 py-20 bg-white/5 rounded-[3rem] mb-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">Success <span class="gradient-text">Stories</span></h2>
+            <p class="text-gray-400">Real results from our talented community.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card p-6 rounded-[2rem] border-l-4 border-purple-500">
+                <h4 class="font-bold text-white mb-2">Hussain</h4>
+                <p class="text-gray-400 text-xs mb-4 uppercase font-bold tracking-widest text-purple-500">Web Development</p>
+                <p class="text-sm text-gray-300">Hussain has successfully completed his Web-Dev. He is now managing his expenses entirely through his own freelance projects.</p>
+            </div>
+            <div class="glass-card p-6 rounded-[2rem] border-l-4 border-secondary">
+                <h4 class="font-bold text-white mb-2">Mahrukh Hussain</h4>
+                <p class="text-gray-400 text-xs mb-4 uppercase font-bold tracking-widest text-secondary">SEO Specialist</p>
+                <p class="text-sm text-gray-300">Mahrukh Hussain is now a certified SEO expert, handling international clients and comfortably managing her expenses.</p>
+            </div>
+            <div class="glass-card p-6 rounded-[2rem] border-l-4 border-green-500">
+                <h4 class="font-bold text-white mb-2">Sonia Baloch</h4>
+                <p class="text-gray-400 text-xs mb-4 uppercase font-bold tracking-widest text-green-500">Freelancing</p>
+                <p class="text-sm text-gray-300">Sonia Baloch utilized her skills to build a stable income stream, allowing her to handle all her educational expenses independently.</p>
+            </div>
+            <div class="glass-card p-6 rounded-[2rem] border-l-4 border-primary">
+                <h4 class="font-bold text-white mb-2">Mehwish</h4>
+                <p class="text-gray-400 text-xs mb-4 uppercase font-bold tracking-widest text-primary">Digital Marketing</p>
+                <p class="text-sm text-gray-300">Mehwish successfully completed her course and is now a professional marketer managing her expenses with her new career.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 border-t border-white/5 text-center">
+        <h3 class="text-xl font-bold mb-6">Connect with us directly</h3>
+        <div class="flex justify-center gap-8">
+            <a href="https://wa.me/yournumber" target="_blank" class="text-4xl text-success hover:scale-125 transition duration-300">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://facebook.com/yourprofile" target="_blank" class="text-4xl text-primary hover:scale-125 transition duration-300">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com/yourprofile" target="_blank" class="text-4xl text-secondary hover:scale-125 transition duration-300">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+        <p class="text-gray-500 mt-8 text-sm tracking-wide">SkillsFlux Mastery © 2026</p>
+    </footer>
+
+    <div id="enrollModal" class="fixed inset-0 z-50 items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div class="glass-card w-full max-w-lg rounded-[2.5rem] p-8 md:p-10 relative border-white/10 shadow-2xl overflow-hidden">
+            
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-500 hover:text-white transition text-xl z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="formContent">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold">Quick <span class="gradient-text">Enroll</span></h2>
+                    <p class="text-gray-400 text-sm mt-1">Please enter your details accurately.</p>
+                </div>
+
+                <form id="regForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
+                        <input required type="text" id="userName" 
+                               oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
+                               placeholder="Letters only" class="w-full px-5 py-3 rounded-2xl form-input mt-2">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
+                        <input required type="email" id="userEmail" 
+                               oninput="this.value = this.value.replace(/\s/g, '').toLowerCase()"
+                               placeholder="example@gmail.com" class="w-full px-5 py-3 rounded-2xl form-input mt-2">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">WhatsApp Number</label>
+                        <input required type="text" id="userWhatsApp" 
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                               placeholder="Digits only" class="w-full px-5 py-3 rounded-2xl form-input mt-2">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Course</label>
+                        <select required id="courseSelect" class="w-full px-5 py-3 rounded-2xl form-input mt-2 appearance-none">
+                            <option value="" disabled selected>-- Choose Course --</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="seo-writing">SEO Content Writing</option>
+                            <option value="freelancing">Freelancing Mastery</option>
+                            <option value="web-dev">Web Development</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-extrabold text-lg shadow-xl hover:scale-[1.01] transition mt-4">
+                        CONFIRM ENROLLMENT
+                    </button>
+                </form>
+            </div>
+
+            <div id="successContent" class="hidden-el flex-col items-center text-center py-10 animate-success">
+                <div class="w-20 h-20 bg-success/20 text-success rounded-full flex items-center justify-center mb-6 text-4xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Success!</h2>
+                <p class="text-gray-400 mb-8 px-4">Your application has been received. Our team will contact you shortly.</p>
+                <button onclick="closeModal()" class="px-8 py-2 border border-gray-700 rounded-full text-sm text-gray-400 hover:text-white transition">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('enrollModal');
+        const courseDropdown = document.getElementById('courseSelect');
+        const formContent = document.getElementById('formContent');
+        const successContent = document.getElementById('successContent');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // PASTE YOUR GOOGLE WEB APP LINK HERE
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHMn6rfb-s7PaxzjEXooXq8VoIz44UWmBDj09i9B2ut0pc8VbgRd_uP_H4LhYpfHfBXA/exec';
+
+        function openModal(courseValue) {
+            formContent.style.display = 'block';
+            successContent.style.display = 'none';
+            modal.classList.add('active');
+            if(courseValue) courseDropdown.value = courseValue;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.getElementById('regForm').reset();
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Processing...';
+
+            try {
+                const formData = new FormData();
+                formData.append('Name', document.getElementById('userName').value);
+                formData.append('Email', document.getElementById('userEmail').value);
+                formData.append('WhatsApp', document.getElementById('userWhatsApp').value);
+                formData.append('Course', document.getElementById('courseSelect').value);
+                formData.append('Date', new Date().toLocaleString());
+
+                await fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+
+                formContent.style.display = 'none';
+                successContent.style.display = 'flex';
+                setTimeout(() => closeModal(), 4000);
+            } catch (err) {
+                alert("Submission failed. Check your internet.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'CONFIRM ENROLLMENT';
+            }
+        }
+
+        window.onclick = function(event) { if (event.target == modal) closeModal(); }
+    </script>
+
+</body>
+</html>
